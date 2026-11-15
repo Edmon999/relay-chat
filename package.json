@@ -1,0 +1,12 @@
+{
+  "name": "super",
+  "private": true,
+  "type": "module",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.8.0",
+      "onFail": "download"
+    }
+  }
+}
