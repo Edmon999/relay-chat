@@ -15,6 +15,9 @@
     "noUncheckedSideEffectImports": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": []
+    "types": [],
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true
   }
 }
