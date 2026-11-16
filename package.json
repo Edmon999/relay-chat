@@ -2,21 +2,37 @@
   "name": "super",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "typecheck": "turbo typecheck",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.1",
+    "oxfmt": "0.78.0",
+    "oxlint": "^1.93.0",
+    "oxlint-tsgolint": "^7.0.2007",
+    "turbo": "^2.11.11",
+    "typescript": "^7.0.2"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}": [
+      "oxlint --fix",
+      "oxfmt --no-error-on-unmatched-pattern"
+    ],
+    "*.{json,jsonc,md,css,html,yml,yaml}": "oxfmt --no-error-on-unmatched-pattern"
+  },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
       "version": "11.8.0",
       "onFail": "download"
     }
-  },
-  "devDependencies": {
-    "turbo": "^2.11.11",
-    "typescript": "^7.0.2"
-  },
-  "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "typecheck": "turbo typecheck",
-    "lint": "turbo lint"
   }
 }

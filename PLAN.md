@@ -41,30 +41,32 @@ Later add-ons: an Expo mobile client, a small multiplayer game inside chats.
 [AWS: ECS Fargate, RDS, ElastiCache, S3, CloudFront]  provisioned with Terraform/CDK
 ```
 
-**Key principle:** the server is a *relay*. It stores an encrypted message only until the
+**Key principle:** the server is a _relay_. It stores an encrypted message only until the
 recipient device acknowledges it, then deletes it. The server can never read message content.
 
 ## 3. Tech stack (decided — change only with a written reason in `docs/adr/`)
+
 ~
-| Area | Choice |
-|---|---|
-| Monorepo | pnpm workspaces + Turborepo |
-| Language | TypeScript everywhere (strict mode); Python only for ML training |
-| Frontend | React + Vite, TanStack Query, Zustand (or similar), React Router |
-| Backend | Node.js + Fastify (learn the fundamentals; NestJS optional later) |
-| Validation / shared types | Zod schemas in `packages/shared` |
-| Database | PostgreSQL — raw SQL first, then Drizzle |
-| Cache / pub-sub / queues | Redis + BullMQ |
-| Real-time | WebSockets (`ws` or Fastify websocket plugin) |
-| Crypto | libsodium (`libsodium-wrappers`) — never hand-rolled crypto |
-| Local storage | IndexedDB (Dexie) on web, SQLite on mobile |
-| Unit/integration tests | Vitest, Testcontainers (real Postgres/Redis in Docker) |
-| E2E tests | Playwright |
-| Load tests | k6 |
-| CI/CD | GitHub Actions |
-| Infra | Docker, AWS, Terraform (or AWS CDK in TypeScript) |
-| Observability | OpenTelemetry, structured logs (pino), CloudWatch |
-| ML | PyTorch for training → export ONNX → run in browser |
+
+| Area                      | Choice                                                            |
+| ------------------------- | ----------------------------------------------------------------- |
+| Monorepo                  | pnpm workspaces + Turborepo                                       |
+| Language                  | TypeScript everywhere (strict mode); Python only for ML training  |
+| Frontend                  | React + Vite, TanStack Query, Zustand (or similar), React Router  |
+| Backend                   | Node.js + Fastify (learn the fundamentals; NestJS optional later) |
+| Validation / shared types | Zod schemas in `packages/shared`                                  |
+| Database                  | PostgreSQL — raw SQL first, then Drizzle                          |
+| Cache / pub-sub / queues  | Redis + BullMQ                                                    |
+| Real-time                 | WebSockets (`ws` or Fastify websocket plugin)                     |
+| Crypto                    | libsodium (`libsodium-wrappers`) — never hand-rolled crypto       |
+| Local storage             | IndexedDB (Dexie) on web, SQLite on mobile                        |
+| Unit/integration tests    | Vitest, Testcontainers (real Postgres/Redis in Docker)            |
+| E2E tests                 | Playwright                                                        |
+| Load tests                | k6                                                                |
+| CI/CD                     | GitHub Actions                                                    |
+| Infra                     | Docker, AWS, Terraform (or AWS CDK in TypeScript)                 |
+| Observability             | OpenTelemetry, structured logs (pino), CloudWatch                 |
+| ML                        | PyTorch for training → export ONNX → run in browser               |
 
 ## 4. Repo structure
 
@@ -128,7 +130,8 @@ short write-up in `docs/learning/phase-N.md` (written by me).
 - [ ] ✍️ Create 2 project skills in `.claude/skills/`:
       `add-endpoint` (how we add an API route + schema + tests) and
       `write-e2e-test` (how we write Playwright tests here)
-- [ ] 🤖 ESLint, Prettier, strict tsconfig, Husky/lint-staged
+- [x] 🤖 ESLint, Prettier, strict tsconfig, Husky/lint-staged
+      — changed: oxlint (type-aware) + oxfmt instead of ESLint + Prettier → ADR 0002
 - [ ] ✍️ First GitHub Actions workflow: install → lint → typecheck → test
 - [ ] 🤖 `docker-compose.yml` for local Postgres + Redis
 - [ ] ✍️ ADR 0001: why this stack
@@ -142,6 +145,7 @@ short write-up in `docs/learning/phase-N.md` (written by me).
 Plain (non-encrypted) chat first, so I learn backend fundamentals without crypto complexity.
 
 **Backend**
+
 - [ ] ✍️ Fastify server, health route, config via env + Zod validation
 - [ ] ✍️ Postgres schema with raw SQL migrations: `users`, `rooms`, `room_members`, `messages`
 - [ ] ✍️ Auth from scratch: register/login, argon2 password hashing, session cookies
@@ -150,9 +154,10 @@ Plain (non-encrypted) chat first, so I learn backend fundamentals without crypto
 - [ ] 🤖 Remaining CRUD endpoints following my patterns
 - [ ] ✍️ WebSocket: authenticate the connection, join rooms, broadcast messages
 - [ ] ✍️ Centralized error handling + request logging (pino, request IDs)
-- [ ] 🤖 Switch raw SQL to Drizzle *after* I've written the raw version (compare both)
+- [ ] 🤖 Switch raw SQL to Drizzle _after_ I've written the raw version (compare both)
 
 **Frontend**
+
 - [ ] ✍️ App architecture: feature folders, API client layer, query/cache strategy,
       WebSocket connection manager (reconnect with backoff)
 - [ ] ✍️ Optimistic message sending with pending/failed states
@@ -160,6 +165,7 @@ Plain (non-encrypted) chat first, so I learn backend fundamentals without crypto
 - [ ] ✍️ Virtualized message list (thousands of messages, scroll anchoring)
 
 **Testing**
+
 - [ ] ✍️ Integration tests with Testcontainers (auth + messages)
 - [ ] ✍️ First Playwright test: two users chat in real time (two browser contexts)
 
@@ -242,12 +248,14 @@ Because messages are encrypted, the server can't see them, so **the AI must run 
 device**. This is the main AI part of the project.
 
 **6a. Baseline with a pre-trained model**
+
 - [ ] ✍️ Research small models that run in the browser (transformers.js / onnxruntime-web);
       measure model size, load time, inference latency → ADR
 - [ ] ✍️ Run inference in a Web Worker: given last N messages → 3 suggested replies
 - [ ] ✍️ UX: suggestion chips, never auto-send, easy to disable
 
 **6b. Train my own model (Python)**
+
 - [ ] ✍️ Learn basics: tokenization, embeddings, train/validation split, overfitting
       (fast.ai or a PyTorch tutorial first)
 - [ ] ✍️ Dataset: public conversational dataset (check licence) — NOT real users' messages
@@ -257,6 +265,7 @@ device**. This is the main AI part of the project.
 - [ ] ✍️ Compare my model vs the pre-trained baseline on size/latency/quality
 
 **6c. A model that learns by itself (on-device personalization)**
+
 - [ ] ✍️ Log locally (never sent anywhere) which suggestion the user picked or ignored
 - [ ] ✍️ Train a small personalization layer on device (e.g. online logistic regression
       or a contextual bandit re-ranking the candidates) — written in TypeScript
@@ -275,7 +284,7 @@ personalization measurably changes ranking.
       (SQLite local store, push notifications with encrypted payloads)
 - [ ] Multiplayer mini-game inside a chat (tic-tac-toe / drawing game) over the same
       WebSocket infra; then a reinforcement-learning bot that learns the game by self-play
-- [ ] Toy browser engine (HTML parser + layout) following *Web Browser Engineering*
+- [ ] Toy browser engine (HTML parser + layout) following _Web Browser Engineering_
       (browser.engineering) — pure frontend-internals learning
 
 ---
@@ -289,6 +298,7 @@ personalization measurably changes ranking.
 
 ## 8. Progress log
 
-| Date | Phase | Note |
-|---|---|---|
-| 2026-11-16 | 0 | Monorepo done: pnpm 11 + Turbo 2, TS 7, Vite 8 (Oxc, no Babel). Linter: oxlint instead of ESLint (needs ADR). |
+| Date       | Phase | Note                                                                                                          |
+| ---------- | ----- | ------------------------------------------------------------------------------------------------------------- |
+| 2026-11-16 | 0     | Monorepo done: pnpm 11 + Turbo 2, TS 7, Vite 8 (Oxc, no Babel). Linter: oxlint instead of ESLint (needs ADR). |
+| 2026-11-17 | 0     | Lint/format: oxlint 1.93 (type-aware) + oxfmt 0.78, Husky + lint-staged pre-commit, LF line endings.          |
