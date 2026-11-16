@@ -122,7 +122,8 @@ short write-up in `docs/learning/phase-N.md` (written by me).
 
 ### Phase 0 — Foundation (week 1)
 
-- [ ] ✍️ Create monorepo (pnpm + Turborepo), `apps/web`, `apps/api`, `packages/shared`
+- [x] ✍️ Create monorepo (pnpm + Turborepo), `apps/web`, `apps/api`, `packages/shared`
+      — note: TS 7, shared consumed as source, api runs on native Node type stripping (ADR pending)
 - [ ] ✍️ Write `CLAUDE.md` myself (project overview, commands, conventions, link to PLAN.md)
 - [ ] ✍️ Create 2 project skills in `.claude/skills/`:
       `add-endpoint` (how we add an API route + schema + tests) and
@@ -290,4 +291,4 @@ personalization measurably changes ranking.
 
 | Date | Phase | Note |
 |---|---|---|
-| | | |
+| 2026-11-16 | 0 | Monorepo done: pnpm 11 + Turbo 2, TS 7, Vite 8 (Oxc, no Babel). Linter: oxlint instead of ESLint (needs ADR). |
