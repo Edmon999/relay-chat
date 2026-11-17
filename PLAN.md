@@ -6,14 +6,18 @@
 
 ---
 
-## 1. Who I am and why this project exists
+## 1. Project goals
 
-- Frontend engineer, ~5 years, React + TypeScript, Next.js. Strong on frontend architecture,
-  performance, design-system migrations.
-- **Goal:** become a strong full-stack engineer (TypeScript backend + DevOps/AWS) while also
-  deepening frontend architecture, testing and performance — and end up with a portfolio
-  project I can talk about in interviews.
-- **Not a goal:** shipping a product fast. Understanding > speed.
+- **Build a production-grade system end to end:** TypeScript backend, real-time messaging,
+  end-to-end encryption, AWS infrastructure as code, CI/CD, observability and on-device ML.
+- **Go deep, not fast.** Every non-trivial choice is made deliberately and recorded in
+  `docs/adr/` with its trade-offs. Understanding > speed.
+- **AI-assisted, human-written.** Claude Code acts as a mentor and reviewer: the developer
+  writes every first-of-its-kind implementation (✍️); Claude handles repetitions of
+  established patterns and tooling setup (🤖) and drafts docs. See "How we work" below.
+- **Background:** built by a frontend engineer (~5 years, React + TypeScript, Next.js;
+  frontend architecture, performance, design-system migrations) extending into backend,
+  DevOps and ML.
 
 ## 2. What we are building
 
@@ -45,8 +49,6 @@ Later add-ons: an Expo mobile client, a small multiplayer game inside chats.
 recipient device acknowledges it, then deletes it. The server can never read message content.
 
 ## 3. Tech stack (decided — change only with a written reason in `docs/adr/`)
-
-~
 
 | Area                      | Choice                                                            |
 | ------------------------- | ----------------------------------------------------------------- |
