@@ -126,7 +126,8 @@ short write-up in `docs/learning/phase-N.md` (written by me).
 
 - [x] ✍️ Create monorepo (pnpm + Turborepo), `apps/web`, `apps/api`, `packages/shared`
       — note: TS 7, shared consumed as source, api runs on native Node type stripping (ADR pending)
-- [ ] ✍️ Write `CLAUDE.md` myself (project overview, commands, conventions, link to PLAN.md)
+- [x] ✍️ Write `CLAUDE.md` myself (project overview, commands, conventions, link to PLAN.md)
+      — drafted by Claude (docs delegated); revise as mistakes show up
 - [ ] ✍️ Create 2 project skills in `.claude/skills/`:
       `add-endpoint` (how we add an API route + schema + tests) and
       `write-e2e-test` (how we write Playwright tests here)
