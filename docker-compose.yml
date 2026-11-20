@@ -1,0 +1,40 @@
+# Local development services only. Never reuse these credentials outside this machine.
+name: relay-chat
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: relay
+      POSTGRES_PASSWORD: relay_dev
+      POSTGRES_DB: relay
+    ports:
+      # Host port 5433: another local project already uses 5432 on this machine.
+      - "127.0.0.1:5433:5432"
+    volumes:
+      # Postgres 18 images keep data under a versioned folder inside this path.
+      - postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U relay -d relay"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    # 7.2 is the common baseline for Redis OSS and ElastiCache for Valkey.
+    image: redis:7.2-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      # Host port 6380: another local project already uses 6379 on this machine.
+      - "127.0.0.1:6380:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  postgres-data:
+  redis-data:

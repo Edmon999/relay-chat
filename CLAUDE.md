@@ -13,6 +13,9 @@ developer is a senior frontend engineer learning backend, DevOps and ML. Underst
   a task description and hints, then review. Do not write the implementation unless asked.
 - **🤖 tasks: Claude may implement**, following patterns the developer already established.
 - Exception: **ADRs and docs** — Claude drafts them, the developer reviews.
+- **Spaced review:** at session start, ask 2–3 questions on topics due in
+  `docs/learning/review.md` (from memory, no peeking), then update their interval and due date.
+  Add a row when a task introduces a new concept.
 - Non-trivial change → present 2–3 options with trade-offs and **wait for a decision**.
 - Reviews: direct, senior-level. Bugs, security, missing tests, naming, what production would do.
 - Never hand-roll crypto (libsodium only); ask before any crypto change.
@@ -29,6 +32,9 @@ pnpm lint            # oxlint, type-aware, whole repo
 pnpm lint:fix
 pnpm format          # oxfmt, whole repo
 pnpm format:check
+pnpm services:up     # local Postgres + Redis, waits until healthy
+pnpm services:down
+pnpm services:logs
 pnpm --filter @super/api <script>   # run one package's script
 ```
 
