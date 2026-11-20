@@ -116,6 +116,8 @@ This is a **learning** project. Follow these rules:
    roughly per month and whether it is free-tier.
 9. **Update this file.** When a task is finished, tick its checkbox and add a one-line note
    if something changed.
+10. **Review old topics.** At the start of a session, quiz me on 2–3 topics that are due in
+    `docs/learning/review.md` before new work, then update their dates there.
 
 ## 6. Phases
 
@@ -127,20 +129,20 @@ short write-up in `docs/learning/phase-N.md` (written by me).
 ### Phase 0 — Foundation (week 1)
 
 - [x] ✍️ Create monorepo (pnpm + Turborepo), `apps/web`, `apps/api`, `packages/shared`
-      — note: TS 7, shared consumed as source, api runs on native Node type stripping (ADR pending)
+      — note: TS 7, shared consumed as source, api runs on native Node type stripping (ADR 0001)
 - [x] ✍️ Write `CLAUDE.md` myself (project overview, commands, conventions, link to PLAN.md)
       — drafted by Claude (docs delegated); revise as mistakes show up
-- [ ] ✍️ Create 2 project skills in `.claude/skills/`:
-      `add-endpoint` (how we add an API route + schema + tests) and
-      `write-e2e-test` (how we write Playwright tests here)
 - [x] 🤖 ESLint, Prettier, strict tsconfig, Husky/lint-staged
       — changed: oxlint (type-aware) + oxfmt instead of ESLint + Prettier → ADR 0002
 - [x] ✍️ First GitHub Actions workflow: install → lint → typecheck → test
       — format check, lint, typecheck and build run on Linux; add `test` with the first Vitest tests
-- [ ] 🤖 `docker-compose.yml` for local Postgres + Redis
-- [ ] ✍️ ADR 0001: why this stack
+- [x] 🤖 `docker-compose.yml` for local Postgres + Redis
+      — Postgres on host port 5433, Redis on 6380 (5432/6379 taken by another local project)
+- [x] ✍️ ADR 0001: why this stack
+      — drafted by Claude (docs delegated)
 
-**Done when:** `pnpm dev` runs web + api, CI is green on a PR, CLAUDE.md and 2 skills exist.
+**Done when:** `pnpm dev` runs web + api, CI is green on a PR, CLAUDE.md exists, and local
+Postgres + Redis start healthy.
 
 ---
 
@@ -172,6 +174,20 @@ Plain (non-encrypted) chat first, so I learn backend fundamentals without crypto
 
 - [ ] ✍️ Integration tests with Testcontainers (auth + messages)
 - [ ] ✍️ First Playwright test: two users chat in real time (two browser contexts)
+
+**Security**
+
+- [ ] ✍️ Read the OWASP API Security Top 10 (owasp.org/API-Security); note which risks apply
+      to our API
+- [ ] ✍️ Threat model in `docs/security/threat-model.md`: what we protect, from whom, and what
+      we don't protect against. Update it at the end of every later phase.
+- [ ] ✍️ Dependency security: Dependabot for npm and GitHub Actions, plus `pnpm audit` in CI
+
+**Project skills** (moved from Phase 0: write them once these patterns exist)
+
+- [ ] ✍️ Create 2 project skills in `.claude/skills/`:
+      `add-endpoint` (how we add an API route + schema + tests) and
+      `write-e2e-test` (how we write Playwright tests here)
 
 **Done when:** two users can register, create a room and chat live; tests in CI.
 
@@ -307,3 +323,4 @@ personalization measurably changes ranking.
 | 2026-11-16 | 0     | Monorepo done: pnpm 11 + Turbo 2, TS 7, Vite 8 (Oxc, no Babel). Linter: oxlint instead of ESLint (needs ADR). |
 | 2026-11-17 | 0     | Lint/format: oxlint 1.93 (type-aware) + oxfmt 0.78, Husky + lint-staged pre-commit, LF line endings.          |
 | 2026-11-18 | 0     | CI added: PR #1 green on Linux and merged; the push run on `main` is green too.                               |
+| 2026-11-20 | 0     | Local Postgres 18 + Redis 7.2 via Compose, both healthy. **Phase 0 done.** First Redis rate-limiter exercise. |
