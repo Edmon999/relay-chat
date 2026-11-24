@@ -22,4 +22,4 @@ Spaced repetition for concepts learned in this project, so earlier phases are no
 | Compose: services, healthchecks, `POSTGRES_*` only on first start | 2026-11-19 | 1 week   | 2026-11-27 |
 | PostgreSQL basics: tables, SQL, transactions, why relational      | 2026-11-19 | 1 day    | 2026-11-20 |
 | Redis: data types, TTLs, AOF persistence, Redis vs Postgres       | 2026-11-20 | 1 day    | 2026-11-21 |
-| Redis rate limiting: fixed window, `INCR` + `EXPIRE NX`           | 2026-11-20 | 1 day    | 2026-11-21 |
+| Redis rate limiting: `INCR` + `EXPIRE NX`, `MULTI`/`EXEC`         | 2026-11-20 | 1 day    | 2026-11-21 |
