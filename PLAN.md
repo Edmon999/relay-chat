@@ -152,7 +152,8 @@ Plain (non-encrypted) chat first, so I learn backend fundamentals without crypto
 
 **Backend**
 
-- [ ] ✍️ Fastify server, health route, config via env + Zod validation
+- [x] ✍️ Fastify server, health route, config via env + Zod validation
+      — `buildApp()` in `app.ts`, `listen` in `server.ts`; first Vitest test (`inject`), `test` in Turbo + CI
 - [ ] ✍️ Postgres schema with raw SQL migrations: `users`, `rooms`, `room_members`, `messages`
 - [ ] ✍️ Auth from scratch: register/login, argon2 password hashing, session cookies
       (httpOnly, secure, sameSite), logout, session expiry
@@ -318,9 +319,10 @@ personalization measurably changes ranking.
 
 ## 8. Progress log
 
-| Date       | Phase | Note                                                                                                          |
-| ---------- | ----- | ------------------------------------------------------------------------------------------------------------- |
-| 2026-11-16 | 0     | Monorepo done: pnpm 11 + Turbo 2, TS 7, Vite 8 (Oxc, no Babel). Linter: oxlint instead of ESLint (needs ADR). |
-| 2026-11-17 | 0     | Lint/format: oxlint 1.93 (type-aware) + oxfmt 0.78, Husky + lint-staged pre-commit, LF line endings.          |
-| 2026-11-18 | 0     | CI added: PR #1 green on Linux and merged; the push run on `main` is green too.                               |
-| 2026-11-20 | 0     | Local Postgres 18 + Redis 7.2 via Compose, both healthy. **Phase 0 done.** First Redis rate-limiter exercise. |
+| Date       | Phase | Note                                                                                                              |
+| ---------- | ----- | ----------------------------------------------------------------------------------------------------------------- |
+| 2026-11-16 | 0     | Monorepo done: pnpm 11 + Turbo 2, TS 7, Vite 8 (Oxc, no Babel). Linter: oxlint instead of ESLint (needs ADR).     |
+| 2026-11-17 | 0     | Lint/format: oxlint 1.93 (type-aware) + oxfmt 0.78, Husky + lint-staged pre-commit, LF line endings.              |
+| 2026-11-18 | 0     | CI added: PR #1 green on Linux and merged; the push run on `main` is green too.                                   |
+| 2026-11-20 | 0     | Local Postgres 18 + Redis 7.2 via Compose, both healthy. **Phase 0 done.** First Redis rate-limiter exercise.     |
+| 2026-11-24 | 1     | Fastify 5 server, `/health`, env validated with Zod (fail fast). Vitest 5 + `app.inject`; `pnpm test` runs in CI. |

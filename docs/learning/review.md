@@ -23,3 +23,7 @@ Spaced repetition for concepts learned in this project, so earlier phases are no
 | PostgreSQL basics: tables, SQL, transactions, why relational      | 2026-11-19 | 1 day    | 2026-11-20 |
 | Redis: data types, TTLs, AOF persistence, Redis vs Postgres       | 2026-11-20 | 1 day    | 2026-11-21 |
 | Redis rate limiting: `INCR` + `EXPIRE NX`, `MULTI`/`EXEC`         | 2026-11-20 | 1 day    | 2026-11-21 |
+| Host vs port, `127.0.0.1` vs `0.0.0.0`, what "server is up" means | 2026-11-24 | 1 day    | 2026-11-25 |
+| Env config: `--env-file`, `z.coerce`, `safeParse`, fail fast      | 2026-11-24 | 1 day    | 2026-11-25 |
+| Fastify: `buildApp` vs `listen` split, routes, logger             | 2026-11-24 | 1 day    | 2026-11-25 |
+| Vitest + `app.inject`, types (compile time) vs Zod (runtime)      | 2026-11-24 | 1 day    | 2026-11-25 |
