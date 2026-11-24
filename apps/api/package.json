@@ -4,13 +4,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/server.ts",
-    "typecheck": "tsc"
+    "dev": "node --env-file-if-exists=.env --watch src/server.ts",
+    "typecheck": "tsc",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@super/shared": "workspace:*"
+    "@super/shared": "workspace:*",
+    "fastify": "^5.12.8",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@types/node": "^24.19.2"
+    "@types/node": "^24.19.2",
+    "vitest": "^5.1.1"
   }
 }

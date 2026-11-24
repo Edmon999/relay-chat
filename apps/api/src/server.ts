@@ -1,9 +1,11 @@
-import { HealthResponse } from "@super/shared";
+import { config } from "./config.ts";
+import { buildApp } from "./app.ts";
 
-const health: HealthResponse = {
-  status: "ok",
-  timestamp: new Date().toISOString(),
-};
+const app = buildApp({ logger: true });
 
-const parseHealth = HealthResponse.parse(health);
-console.log(parseHealth, "parseHealth");
+try {
+  await app.listen({ port: config.PORT, host: config.HOST });
+} catch (err) {
+  app.log.error(err);
+  process.exit(1);
+}
