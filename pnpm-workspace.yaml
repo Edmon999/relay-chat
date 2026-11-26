@@ -1,3 +1,8 @@
 packages:
   - "apps/*"
   - "packages/*"
+# Install scripts not needed: ssh2/cpu-features are optional native speedups, protobufjs is unused at runtime here.
+allowBuilds:
+  cpu-features: false
+  protobufjs: false
+  ssh2: false

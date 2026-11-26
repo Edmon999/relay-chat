@@ -154,7 +154,8 @@ Plain (non-encrypted) chat first, so I learn backend fundamentals without crypto
 
 - [x] ✍️ Fastify server, health route, config via env + Zod validation
       — `buildApp()` in `app.ts`, `listen` in `server.ts`; first Vitest test (`inject`), `test` in Turbo + CI
-- [ ] ✍️ Postgres schema with raw SQL migrations: `users`, `rooms`, `room_members`, `messages`
+- [x] ✍️ Postgres schema with raw SQL migrations: `users`, `rooms`, `room_members`, `messages`
+      — own runner (`migration.ts` + `db:migrate`), schema tested with Testcontainers (postgres:18-alpine)
 - [ ] ✍️ Auth from scratch: register/login, argon2 password hashing, session cookies
       (httpOnly, secure, sameSite), logout, session expiry
 - [ ] ✍️ REST: create room, list rooms, invite user, paginated message history (cursor-based)
@@ -326,3 +327,4 @@ personalization measurably changes ranking.
 | 2026-11-18 | 0     | CI added: PR #1 green on Linux and merged; the push run on `main` is green too.                                   |
 | 2026-11-20 | 0     | Local Postgres 18 + Redis 7.2 via Compose, both healthy. **Phase 0 done.** First Redis rate-limiter exercise.     |
 | 2026-11-24 | 1     | Fastify 5 server, `/health`, env validated with Zod (fail fast). Vitest 5 + `app.inject`; `pnpm test` runs in CI. |
+| 2026-11-27 | 1     | Raw SQL migrations + own runner, 4 tables with FKs and indexes. First Testcontainers test (schema constraints).   |
