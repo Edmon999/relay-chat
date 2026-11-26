@@ -18,7 +18,7 @@ Spaced repetition for concepts learned in this project, so earlier phases are no
 | Turborepo: task graph, caching, `dependsOn: ["^task"]`                   | 2026-11-17 | 1 day    | 2026-11-25 |
 | oxlint, oxfmt, Husky + lint-staged                                       | 2026-11-17 | 1 day    | 2026-11-20 |
 | GitHub Actions: workflow, `uses` vs `run`, permissions, lockfile         | 2026-11-18 | 1 day    | 2026-11-20 |
-| Docker: image vs container, volumes, ports, containers vs VMs            | 2026-11-19 | 1 day    | 2026-11-25 |
+| Docker: image vs container, volumes, ports, containers vs VMs            | 2026-11-19 | 1 week   | 2026-12-04 |
 | Compose: services, healthchecks, `POSTGRES_*` only on first start        | 2026-11-19 | 1 week   | 2026-11-27 |
 | PostgreSQL basics: tables, SQL, transactions, why relational             | 2026-11-19 | 1 week   | 2026-12-01 |
 | Redis: data types, TTLs, AOF persistence, Redis vs Postgres              | 2026-11-20 | 1 day    | 2026-11-21 |
@@ -27,6 +27,6 @@ Spaced repetition for concepts learned in this project, so earlier phases are no
 | Env config: `--env-file`, `z.coerce`, `safeParse`, fail fast             | 2026-11-24 | 1 day    | 2026-11-25 |
 | Fastify: `buildApp` vs `listen` split, routes, logger                    | 2026-11-24 | 1 day    | 2026-11-25 |
 | Vitest + `app.inject`, types (compile time) vs Zod (runtime)             | 2026-11-24 | 1 day    | 2026-11-25 |
-| Migrations: ordered files, `schema_migrations`, one transaction each     | 2026-11-25 | 1 day    | 2026-11-26 |
+| Migrations: ordered files, `schema_migrations`, one transaction each     | 2026-11-25 | 1 day    | 2026-11-28 |
 | Schema design: PK, composite PK, FK + `ON DELETE`, join tables, `CHECK`  | 2026-11-25 | 1 day    | 2026-11-26 |
 | Indexes: B-tree, column order, index for real queries, cursor pagination | 2026-11-25 | 1 day    | 2026-11-26 |
